@@ -39,6 +39,7 @@ def predict_model(audio_data, SAMPLING_RATE):
             y_preds = selected_values.argmax()
             return classes[y_preds]
     except:
+        print("[!Notice!] Tensor Received incorrect Valur".format(Fore.BLUE, Fore.RESET))
         return None
 
 
@@ -67,6 +68,7 @@ def show_painting():
         print()
 
         path_of_file = input("""\t{}Please Give Me Path of the Audio File format {}\n""".format(Fore.GREEN, Fore.RESET))
+        print("Given Data begin to processed!")
 
     except Exception as e:
         return "[-] Couldn't show the start painting: {}".format(e)
@@ -115,36 +117,6 @@ for i in range(len(chunks) - 1):
 for audio_data in tqdm.tqdm(chunks, desc="Processing audio chunks"):
     res = predict_model(audio_data, 16000)
     print(res)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # close the PyAudio stream and terminate PyAudio
