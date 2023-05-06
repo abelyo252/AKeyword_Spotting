@@ -81,7 +81,7 @@ classes = ['Eserat', 'Agtew', 'Dferat', 'Tlefat', 'Reshinachew', 'Tsetargew',
            'Forjid' , 'Shibr' , 'Gejera' , 'Ets' , 'Gubo' , 'Zrefew' , 'Refrfew' ,
            'Dfaw' , 'Selilew' , 'Musina' , 'Zelzlew' , 'Afendaw' , 'Agayew', 'Zerirew' ,'Unknown' , 'Silence']
 
-MODEL_PATH = "model/asb_ensemble_nice.onnx"
+MODEL_PATH = "model/asb_ensemble.onnx"
 sess = onnxruntime.InferenceSession(MODEL_PATH)
 # set the desired audio parameters
 RATE = 16000
