@@ -114,10 +114,14 @@ for i in range(len(chunks) - 1):
     new_chunks.append(new_chunk)
 
 
+
+result = []
 for audio_data in tqdm.tqdm(chunks, desc="Processing audio chunks"):
     res = predict_model(audio_data, 16000)
-    print(res)
+    result.append(res)
 
+print(f"The Result of {len(chunks)} had {len(result)}")
+print(result)
 
 # close the PyAudio stream and terminate PyAudio
 stream.stop_stream()
