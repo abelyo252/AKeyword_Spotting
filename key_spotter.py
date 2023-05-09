@@ -2,6 +2,7 @@ import pyaudio
 import numpy as np
 import librosa
 import pyfiglet
+import tensorflow as tf
 from halo import Halo
 from colorama import Fore, init
 import time
@@ -9,27 +10,38 @@ import wave
 import onnxruntime
 from utils import log_specgram , MFCC , MSLFB
 import tqdm
+import tensorflow_io as tfio
 
+def predict_model(signal_resampled, SAMPLING_RATE):
+    audio_length = 48000
+    if len(signal_resampled.shape)==2:
+      signal_resampled = np.mean(signal_resampled, axis=1)
 
-def predict_model(audio_data, SAMPLING_RATE):
+    if len(signal_resampled) > audio_length:
+      signal_resampled = signal_resampled[:audio_length]
+    elif len(signal_resampled) != audio_length:
+      zeros_needed = audio_length - len(signal_resampled)
+      signal_resampled = np.append(signal_resampled, np.zeros((zeros_needed)))
 
-    freqs, times, _spectrogram = log_specgram(audio_data, SAMPLING_RATE)
-    msLFB_spec = MSLFB(_spectrogram)
-    mcff_spec = MFCC(_spectrogram)
+    msLFB_spec = MSLFB(signal_resampled)
+    mcff_spec = MFCC(signal_resampled)
+
+    signal_resampled.fill(0)
     # Assume x_new_mfcc and x_new_mslfb are the new input data
-    x_new_mfcc_reshaped_spec = np.reshape(mcff_spec, (1, mcff_spec.shape[0], mcff_spec.shape[1], 1)).astype(
-        np.float32)
-    x_new_mslfb_reshaped_spec = np.reshape(msLFB_spec, (1, msLFB_spec.shape[0], msLFB_spec.shape[1], 1)).astype(
-        np.float32)
+    x_new_mfcc_reshaped_spec = np.reshape(mcff_spec, (1, mcff_spec.shape[0], mcff_spec.shape[1], 1)).astype(np.float32)
+    x_new_mslfb_reshaped_spec = np.reshape(msLFB_spec, (1, msLFB_spec.shape[0], msLFB_spec.shape[1], 1)).astype(np.float32)
+
+    # Make predictions on new data
+    # Prepare the input dat
 
     # Make predictions on new data
     # Prepare the input data
-    input_data = {'conv2d_input': x_new_mfcc_reshaped_spec, 'conv2d_3_input': x_new_mslfb_reshaped_spec}
+    input_data = {'conv2d_18_input': x_new_mfcc_reshaped_spec, 'conv2d_21_input': x_new_mslfb_reshaped_spec}
     # Run the prediction
     try:
-        y_probs = sess.model.run(None, input_data)
+        y_probs = sess.run(None, input_data)
         arr = y_probs[0]
-        selected_values = arr[arr > 0.7]
+        selected_values = arr[arr > 0.00005]
 
         # Convert the output to class predictions
         if len(selected_values) == 0:
@@ -39,7 +51,7 @@ def predict_model(audio_data, SAMPLING_RATE):
             y_preds = selected_values.argmax()
             return classes[y_preds]
     except:
-        print("[!Notice!] Tensor Received incorrect Valur".format(Fore.BLUE, Fore.RESET))
+        print("[!Notice!] Tensor Received incorrect Value".format(Fore.BLUE, Fore.RESET))
         return None
 
 
@@ -81,11 +93,11 @@ classes = ['Eserat', 'Agtew', 'Dferat', 'Tlefat', 'Reshinachew', 'Tsetargew',
            'Forjid' , 'Shibr' , 'Gejera' , 'Ets' , 'Gubo' , 'Zrefew' , 'Refrfew' ,
            'Dfaw' , 'Selilew' , 'Musina' , 'Zelzlew' , 'Afendaw' , 'Agayew', 'Zerirew' ,'Unknown' , 'Silence']
 
-MODEL_PATH = "model/asb_ensemble.onnx"
+MODEL_PATH = "model/asb_ensemble_final.onnx"
 sess = onnxruntime.InferenceSession(MODEL_PATH)
 # set the desired audio parameters
 RATE = 16000
-CHUNK_SIZE = 48000
+CHUNK_SIZE =16000
 HALF_CHUNK_SIZE = CHUNK_SIZE // 2
 
 # initialize PyAudio and open the audio file
@@ -107,21 +119,56 @@ print(f"Length of {len(chunks)}")
 print(f"Data of {chunks[5]}")
 
 
+
+
 # create a new list of chunks by taking the last half of the first chunk and the first half of the second chunk
 new_chunks = []
 for i in range(len(chunks) - 1):
     new_chunk = np.concatenate((chunks[i][HALF_CHUNK_SIZE:], chunks[i + 1][:HALF_CHUNK_SIZE]))
     new_chunks.append(new_chunk)
+print(f"Length of the new chunk is  {len(new_chunks)}")
+print(f"Data of {new_chunks[5]}")
 
 
 
-result = []
+result1 = []
+result2 = []
+time = 0
 for audio_data in tqdm.tqdm(chunks, desc="Processing audio chunks"):
     res = predict_model(audio_data, 16000)
-    result.append(res)
+    if res == None:
+        continue
+    result1.append(res)
 
-print(f"The Result of {len(chunks)} had {len(result)}")
-print(result)
+
+
+time = 2
+for audio_data in tqdm.tqdm(new_chunks, desc="Processing audio chunks"):
+    res = predict_model(audio_data, 16000)
+    if res == None:
+        continue
+    result2.append(res)
+
+print()
+print()
+print()
+print()
+print("==============================================")
+print("""\t{}[*] We have detected {} Sequencial and {} Intermediatary Amharic criminal words in this audio file [*]{}\n""".format(Fore.GREEN, len(result1), len(result2), Fore.RESET))
+for  disp in result1:
+    if disp!= None:
+        minute = int(time/60)
+        second = time%60
+        print(f'onDetect Sequencial:  {disp} -> around {minute}:{second}')
+    time = time+3
+for  disp in result2:
+    if disp!= None:
+        minute = int(time/60)
+        second = time%60
+        print(f'onDetect Intermediatary:  {disp} -> around {minute}:{second}')
+    time = time+3
+
+
 
 # close the PyAudio stream and terminate PyAudio
 stream.stop_stream()
