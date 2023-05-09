@@ -1,8 +1,6 @@
-import pyaudio
 import numpy as np
 import librosa
 import pyfiglet
-import tensorflow as tf
 from halo import Halo
 from colorama import Fore, init
 import time
@@ -97,15 +95,9 @@ MODEL_PATH = "model/asb_ensemble_final.onnx"
 sess = onnxruntime.InferenceSession(MODEL_PATH)
 # set the desired audio parameters
 RATE = 16000
-CHUNK_SIZE =16000
+CHUNK_SIZE =48000
 HALF_CHUNK_SIZE = CHUNK_SIZE // 2
 
-# initialize PyAudio and open the audio file
-p = pyaudio.PyAudio()
-stream = p.open(format=pyaudio.paFloat32,
-                channels=1,
-                rate=RATE,
-                output=True)
 
 # read in the audio data and resample it
 audio, sr = librosa.load('myaudio.wav', sr=RATE)
@@ -149,9 +141,7 @@ for audio_data in tqdm.tqdm(new_chunks, desc="Processing audio chunks"):
         continue
     result2.append(res)
 
-print()
-print()
-print()
+
 print()
 print("==============================================")
 print("""\t{}[*] We have detected {} Sequencial and {} Intermediatary Amharic criminal words in this audio file [*]{}\n""".format(Fore.GREEN, len(result1), len(result2), Fore.RESET))
@@ -168,9 +158,3 @@ for  disp in result2:
         print(f'onDetect Intermediatary:  {disp} -> around {minute}:{second}')
     time = time+3
 
-
-
-# close the PyAudio stream and terminate PyAudio
-stream.stop_stream()
-stream.close()
-p.terminate()
