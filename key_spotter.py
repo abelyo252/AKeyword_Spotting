@@ -10,7 +10,7 @@ import wave
 import onnxruntime
 from utils import log_specgram , MFCC , MSLFB
 import tqdm
-import tensorflow_io as tfio
+
 
 def predict_model(signal_resampled, SAMPLING_RATE):
     audio_length = 48000
