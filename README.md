@@ -1,6 +1,6 @@
 # Terminal-ASP_Keyword_Spotting
 
-p align="center">
+<p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fe/Current_Logo_of_Jimma_University.png/220px-Current_Logo_of_Jimma_University.png" />
 </p>
 
@@ -21,9 +21,9 @@ The training data is prepare by Jimma University , 5th year Electrical and Compu
 
 To use the project, you need to clone the repository and install the required dependencies.
 
-$ git clone https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting.git
-$ cd Terminal-ASP_Keyword_Spotting
-$ pip install -r requirements.txt
+'$ git clone https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting.git'
+'$ cd Terminal-ASP_Keyword_Spotting'
+'$ pip install -r requirements.txt'
 
 
 ## Usage
