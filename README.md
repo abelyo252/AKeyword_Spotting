@@ -1,11 +1,26 @@
 # Terminal-ASP_Keyword_Spotting
+
+p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fe/Current_Logo_of_Jimma_University.png/220px-Current_Logo_of_Jimma_University.png" />
+</p>
+
+## JIMMA UNIVERSITY
+ Electrical and Computer Engineering 5th Year Assignment
+ 
 Terminal Keyword spotting is a speech recognition model that can detect 20 criminal Amharic words. This model can be useful in law enforcement and security applications where it is necessary to detect certain keywords in spoken language.
+
+# Project Description
+This is a project to detect the 20 Amharic following 2-3 second criminal voice sampled at 16kHz : Eserat , Agtew, Dferat, Tlefat , Reshinachew , Tsetargew, Forjid , Shibr , Gejera , Ets , Gubo , Zrefew , Refrfew , Dfaw , Selilew , Musina , Zelzlew , Afendaw , Agayew , Zerirew.
+
+
+#Dataset
+The training data is prepare by Jimma University , 5th year Electrical and Computer Engineering Students, and contains 20 criminal voice mentioned above. All the data will be divided to 70% for training and 30% to validation in this work. Also, We have plan provided sample noises which were randomly selected and added to the train and validation sets to make the train and validation more real world like scenarios.
+
 
 ## Installation
 
 To use the project, you need to clone the repository and install the required dependencies.
 
-sh
 $ git clone https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting.git
 $ cd Terminal-ASP_Keyword_Spotting
 $ pip install -r requirements.txt
@@ -15,7 +30,7 @@ $ pip install -r requirements.txt
 
 You can use the project by running the `key_spotter.py` file and passing an Amharic text as input. The program will detect if any of the 20 criminal words are present in the text.
 
-sh
+## Run Code
 $ python key_spotter.py --al 48000 --model 'models/asp_ensemble_model.onnx'
 
 
