@@ -20,11 +20,9 @@ The training data is prepare by Jimma University , 5th year Electrical and Compu
 ## Installation
 
 To use the project, you need to clone the repository and install the required dependencies.
-
-'$ git clone https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting.git'
-'$ cd Terminal-ASP_Keyword_Spotting'
-'$ pip install -r requirements.txt'
-
+`$ git clone https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting.git`
+`$ cd Terminal-ASP_Keyword_Spotting`
+`$ pip install -r requirements.txt`
 
 ## Usage
 
