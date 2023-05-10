@@ -29,7 +29,7 @@ To use the project, you need to clone the repository and install the required de
 You can use the project by running the `key_spotter.py` file and passing an Amharic text as input. The program will detect if any of the 20 criminal words are present in the text.
 
 ## Run Code
-`$ python key_spotter.py --al 48000 --model 'models/asp_ensemble_model.onnx`<br>
+`$ python key_spotter.py --al 48000 --model 'models/asp_ensemble_model.onnx'`<br>
 
 The output will be a list of detected criminal words, if any. with detected time stamp
 
