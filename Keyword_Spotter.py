@@ -171,8 +171,15 @@ def main():
 
             #print("Length of Collected Sample : ", len(audio_data))
 
-            #get_audio(audio_data)
+            #get_audio(audio_data)kk
             frames.clear()
+            
+            
+            if len(audio_data) != 48000:
+                zeros_needed = audio_length - len(audio_data)
+                audio_data = np.append(audio_data, np.zeros((zeros_needed)))
+            
+            
             if len(audio_data) >= NUMBER_OF_SAMPLE_ANALYSED:
                 audio_data = audio_data[:NUMBER_OF_SAMPLE_ANALYSED].astype(np.float32)
 
