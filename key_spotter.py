@@ -3,7 +3,6 @@ Keyword Spotting
 By: Jimma University , Electrical and computer Enginnering Student
 Dataset Collected : 2011 Batch Computer Stream Student
 Website: https://github.com/abelyo252/AKeyword_Spotting
-Website: https://github.com/abelyo252/ASP_Keyword_Spotting
 
 """
 # Import standard modules.
