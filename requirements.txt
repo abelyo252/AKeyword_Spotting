@@ -7,4 +7,3 @@ onnxruntime==1.9.0
 utils==1.0.0
 tqdm==4.64.0
 pygame==2.3.0
-pyaudio==0.2.12
