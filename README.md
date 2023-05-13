@@ -20,7 +20,7 @@ You can  simply follow these instruction to install the latest version of ASP_Ke
 
 
 <p align="center">
-  <img src="https://github.com/abelyo252/ASP_Keyword_Spotting/assets/126100289/97dd62ae-8bdd-459a-b0f1-0425d0a81811">
+  <img src="https://github.com/abelyo252/AKeyword_Spotting/blob/main/image/results.jpg">
 </p>
 
 <pre> Average 0.89 sec for inference</pre>
@@ -28,7 +28,7 @@ You can  simply follow these instruction to install the latest version of ASP_Ke
 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/126100289/234276539-81fe427d-eb08-4c58-b44d-0b82ad406b93.png">
+  <img src="https://github.com/abelyo252/AKeyword_Spotting/blob/main/image/gui.png">
 </p>
 
 
