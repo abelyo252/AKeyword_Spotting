@@ -50,7 +50,7 @@ Of course, this is prior to the addition of any noise to the samples. Additional
 **Why MS-LFB**
 Using deep learning to recognize speech automatically. Mel-Scaled Log Filter-Bank features (MS-LFB), which are both generated from the most often used raw features for speech recognition, are Mel Frequency Cepstral Coefficients (MFCC) and Perceptual Linear Predictive (PLP). According to experiments by this book, MS-LFB can perform better than MFCC when put to the test on a full multiple word utterance, with a relative Word Error Rate (WER) improvement of 4.4%. Consequently, MS-LFB is thought to be a strong contender to be used as a feature in this work.
 
-** MS-LFB Architecture **
+**MS-LFB Architecture**
 <p align="center">
   <img  src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/6a6f88ae-2cde-4c14-a4d6-523f9471fc2e">
 </p>
