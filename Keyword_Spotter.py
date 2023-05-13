@@ -174,7 +174,7 @@ def main():
             if len(audio_data) >= NUMBER_OF_SAMPLE_ANALYSED:
                 audio_data = audio_data[:NUMBER_OF_SAMPLE_ANALYSED].astype(np.float64)
 
-                msLFB_spec = MSLFB(saudio_data)
+                msLFB_spec = MSLFB(audio_data)
                 mcff_spec = MFCC(audio_data)
                 # Assume x_new_mfcc and x_new_mslfb are the new input data
                 x_new_mfcc_reshaped_spec = np.reshape(mcff_spec, (1, mcff_spec.shape[0], mcff_spec.shape[1], 1)).astype(np.float32)
@@ -185,18 +185,20 @@ def main():
                 # Prepare the input data
                 input_data = {'conv2d_18_input': x_new_mfcc_reshaped_spec, 'conv2d_21_input': x_new_mslfb_reshaped_spec}
                 # Run the prediction
-                y_probs = ks.model.run(None, input_data)
-                arr = y_probs[0]
-                selected_values = arr[arr > 0.7]
+                try:
+                    y_probs = self.model.run(None, input_data)
+                    arr = y_probs[0]
+                    selected_values = arr[arr > 0.5]
 
-                # Convert the output to class predictions
-                if len(selected_values) == 0:
-                    result = "None"
-
-                else:
-                    y_preds = selected_values.argmax()
-                    result = f"{label_names[y_preds]}"
-
+                    # Convert the output to class predictions
+                    if len(selected_values) == 0:
+                        result = "None"
+                    else:
+                        y_preds = selected_values.argmax()
+                        result = f"{label_names[y_preds]}"
+                except:
+                    print("[!Notice!] Tensor Received incorrect Value".format(Fore.BLUE, Fore.RESET))
+                    return None
             else:
                 print(colored('[!] Keyspotter didnt capture enough frame , Free some RAM space', 'green'))
 
