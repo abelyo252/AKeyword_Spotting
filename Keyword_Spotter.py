@@ -120,15 +120,17 @@ def main():
     ##################################################################
 
     result = ''
-    label_names = ["Down", "Left", "Right", "Silence", "Unknown", "Up"]
-    NUMBER_OF_SAMPLE_ANALYSED = 16000
+    label_names = ['Eserat', 'Agtew', 'Dferat', 'Tlefat', 'Reshinachew', 'Tsetargew',
+                   'Forjid', 'Shibr', 'Gejera', 'Ets', 'Gubo', 'Zrefew', 'Refrfew',
+                   'Dfaw', 'Selilew', 'Musina', 'Zelzlew', 'Afendaw', 'Agayew', 'Zerirew', 'Unknown', 'Silence']
+    NUMBER_OF_SAMPLE_ANALYSED = 48000
 
-    RECORD_SECONDS = 1
+    RECORD_SECONDS = 3
     SAMPLING_RATE = 16000
     frames = []
     WIDTH = 925
     HEIGHT = 555
-    MODEL_PATH = "model/asb_ensemble_nice.onnx"
+    MODEL_PATH = "model/model.onnx"
 
 
     ks = Keyword_Spotter(WIDTH , HEIGHT,MODEL_PATH)
@@ -183,7 +185,7 @@ def main():
 
                 # Make predictions on new data
                 # Prepare the input data
-                input_data = {'conv2d_input': x_new_mfcc_reshaped_spec, 'conv2d_3_input': x_new_mslfb_reshaped_spec}
+                input_data = {'conv2d_18_input': x_new_mfcc_reshaped_spec, 'conv2d_21_input': x_new_mslfb_reshaped_spec}
                 # Run the prediction
                 y_probs = ks.model.run(None, input_data)
                 arr = y_probs[0]
