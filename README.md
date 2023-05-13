@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/abelyo252/AKeyword_Spotting/blob/main/image/keyword_spotter_logo.png">
+  <img src="">
 </p>
 
 
