@@ -13,8 +13,6 @@ You can  simply use pip to install the latest version of ASP_Keyword_Detector.
 
 <hr>
 
-<hr>
-
 ### Average 0.89 sec for inference
 
 <hr>
