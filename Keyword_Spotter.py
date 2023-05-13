@@ -175,7 +175,7 @@ def main():
             frames.clear()
             
             
-            if len(audio_data) != NUMBER_OF_SAMPLE_ANALYSED:
+            if len(audio_data) < NUMBER_OF_SAMPLE_ANALYSED:
                 zeros_needed = NUMBER_OF_SAMPLE_ANALYSED - len(audio_data)
                 audio_data = np.append(audio_data, np.zeros((zeros_needed)))
             
