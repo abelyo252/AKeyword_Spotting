@@ -47,24 +47,24 @@ First Looking at the digital signal utterances here is how a few randomly select
 
 Of course, this is prior to the addition of any noise to the samples. Additionally, because the utterances rarely last a 3 full second, the length of them may be reduced depending on the strength of the signal. 
 
-** Why MS-LFB **
+**Why MS-LFB**
 Using deep learning to recognize speech automatically. Mel-Scaled Log Filter-Bank features (MS-LFB), which are both generated from the most often used raw features for speech recognition, are Mel Frequency Cepstral Coefficients (MFCC) and Perceptual Linear Predictive (PLP). According to experiments by this book, MS-LFB can perform better than MFCC when put to the test on a full multiple word utterance, with a relative Word Error Rate (WER) improvement of 4.4%. Consequently, MS-LFB is thought to be a strong contender to be used as a feature in this work.
 
 ** MS-LFB Architecture **
 <p align="center">
-  <img width="640" height="360" src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/6a6f88ae-2cde-4c14-a4d6-523f9471fc2e">
+  <img  src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/6a6f88ae-2cde-4c14-a4d6-523f9471fc2e">
 </p>
 
-** MS-LFB CNN Model **
+**MS-LFB CNN Model**
 A CNN model has been constructed based on the MS-LFB coefficients and using the 2D output of MS-LFB over time similar to a grayscale image. The image is fed into multiple layers of 2D convolution combined with pooling and dropout layers. Finally the layers have been flattened and with multiple dense layers predicted the output. The full model code is included in the ensemble model so it is not repeated here. But here is an image from reference [8] which describes this process:
 
 <p align="center">
   <img width="640" height="360" src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/0709d3c8-6904-43cb-8d6b-872610a8045b">
 </p>
 
-** Over-ALL Architechure **
+**Over-ALL Architechure**
 <p align="center">
-  <img width="640" height="360" src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/f82c6c80-501e-4cbf-99ae-b432c3abbf6c">
+  <img src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/f82c6c80-501e-4cbf-99ae-b432c3abbf6c">
 </p>
 
 ## Run Code
