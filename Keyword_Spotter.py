@@ -101,7 +101,7 @@ def main():
     FORMAT = pyaudio.paInt16
     CHANNELS = 1
     RATE = 16000
-    RECORD_SECONDS = 5
+    RECORD_SECONDS = 3
     SAMPLING_RATE = 16000
 
     p = pyaudio.PyAudio()
@@ -130,7 +130,7 @@ def main():
     frames = []
     WIDTH = 925
     HEIGHT = 555
-    MODEL_PATH = "model/model.onnx"
+    MODEL_PATH = "models/model.onnx"
 
 
     ks = Keyword_Spotter(WIDTH , HEIGHT,MODEL_PATH)
