@@ -1,0 +1,10 @@
+numpy==1.19.4
+librosa==0.9.1
+pyfiglet==0.7.6
+halo==0.0.30
+colorama==0.4.4
+onnxruntime==1.9.0
+utils==1.0.0
+tqdm==4.64.0
+pygame==2.3.0
+pyaudio==0.2.12
