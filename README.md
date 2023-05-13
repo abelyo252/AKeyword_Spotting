@@ -59,7 +59,7 @@ Using deep learning to recognize speech automatically. Mel-Scaled Log Filter-Ban
 A CNN model has been constructed based on the MS-LFB coefficients and using the 2D output of MS-LFB over time similar to a grayscale image. The image is fed into multiple layers of 2D convolution combined with pooling and dropout layers. Finally the layers have been flattened and with multiple dense layers predicted the output. The full model code is included in the ensemble model so it is not repeated here. But here is an image from reference [8] which describes this process:
 
 <p align="center">
-  <img width="640" height="360" src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/0709d3c8-6904-43cb-8d6b-872610a8045b">
+  <img src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/0709d3c8-6904-43cb-8d6b-872610a8045b">
 </p>
 
 **Over-ALL Architechure**
