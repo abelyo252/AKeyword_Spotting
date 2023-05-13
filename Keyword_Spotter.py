@@ -174,14 +174,12 @@ def main():
             if len(audio_data) >= NUMBER_OF_SAMPLE_ANALYSED:
                 audio_data = audio_data[:NUMBER_OF_SAMPLE_ANALYSED].astype(np.float64)
 
-                freqs, times, _spectrogram = log_specgram(audio_data, SAMPLING_RATE)
-                msLFB_spec = MSLFB(_spectrogram)
-                mcff_spec = MFCC(_spectrogram)
+                msLFB_spec = MSLFB(saudio_data)
+                mcff_spec = MFCC(audio_data)
                 # Assume x_new_mfcc and x_new_mslfb are the new input data
-                x_new_mfcc_reshaped_spec = np.reshape(mcff_spec, (1, mcff_spec.shape[0], mcff_spec.shape[1], 1)).astype(
-                    np.float32)
-                x_new_mslfb_reshaped_spec = np.reshape(msLFB_spec, (1, msLFB_spec.shape[0], msLFB_spec.shape[1], 1)).astype(
-                    np.float32)
+                x_new_mfcc_reshaped_spec = np.reshape(mcff_spec, (1, mcff_spec.shape[0], mcff_spec.shape[1], 1)).astype(np.float32)
+                x_new_mslfb_reshaped_spec = np.reshape(msLFB_spec, (1, msLFB_spec.shape[0], msLFB_spec.shape[1], 1)).astype(np.float32)
+
 
                 # Make predictions on new data
                 # Prepare the input data
