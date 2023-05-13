@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="[https://github.com/abelyo252/ASP_Keyword_Spotting/assets/126100289/97dd62ae-8bdd-459a-b0f1-0425d0a81811](https://github.com/abelyo252/ASP_Keyword_Spotting/assets/126100289/4a17064e-142d-4017-9c3c-b46235769d6b)">
+  <img src="https://github.com/abelyo252/ASP_Keyword_Spotting/assets/126100289/97dd62ae-8bdd-459a-b0f1-0425d0a81811">
 </p>
 
 
