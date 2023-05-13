@@ -16,6 +16,11 @@ To install the most recent version of ASP_Keyword_Detector, just follow these si
 `pip install PyAudio-0.2.11-cp36-cp36m-win_amd64.whl`<br>
 
 
+## Run Code
+
+`$ python key_spotter.py --al 48000 --model "models\model.onnx" --a audio.wav --conf 0.8`<br>
+The output will be a list of detected criminal words, if any. with detected time stamp but if you want to run GUI version with audio spectrum use this instruction but gui part for now is underdevelopment and still has some errors<br>
+`$ python Keyword_Spotter.py`
 <hr>
 
 <p>Keyword spotting is the process of detecting specific words or phrases in a continuous stream of speech. It is a crucial component of many speech recognition systems, including virtual assistants, voice-activated devices, and automated transcription tools. The goal of keyword spotting is to accurately identify and isolate specific keywords from a large corpus of speech data. It also include Graphical user interface.</p>
@@ -72,11 +77,6 @@ A CNN model has been constructed based on the MS-LFB coefficients and using the 
   <img src="https://github.com/abelyo252/AKeyword_Spotting/blob/main/image/arch.png">
 </p>
 
-## Run Code
-
-`$ python key_spotter.py --al 48000 --model 'models/asp_ensemble_final.onnx' --a myaudio.wav --conf 0.8`<br>
-The output will be a list of detected criminal words, if any. with detected time stamp but if you want to run GUI version with audio spectrum use this instruction but gui part for now is underdevelopment and still has some errors<br>
-`$ python Keyword_Spotter.py`
 
 
 ## Voice Detection
