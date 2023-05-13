@@ -68,9 +68,11 @@ A CNN model has been constructed based on the MS-LFB coefficients and using the 
 </p>
 
 ## Run Code
-`$ python key_spotter.py --al 48000 --model 'models/asp_ensemble_model.onnx' -- a audio.wav --conf 0.8`<br>
 
-The output will be a list of detected criminal words, if any. with detected time stamp
+`$ python key_spotter.py --al 48000 --model 'models/asp_ensemble_model.onnx' -- a audio.wav --conf 0.8`<br>
+The output will be a list of detected criminal words, if any. with detected time stamp but if you want to run GUI version with audio spectrum use this instruction but gui part for now is underdevelopment and still has some errors
+`$ python Keyword_Spotter.py`<br>
+
 
 ## Voice Detection
 
