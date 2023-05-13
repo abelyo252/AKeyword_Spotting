@@ -13,6 +13,8 @@ To install the most recent version of ASP_Keyword_Detector, just follow these si
 `git clone https://github.com/abelyo252/AKeyword_Spotting.git`<br>
 `cd AKeyword_Spotting/`<br>
 `pip install -r requirements.txt`<br>
+`pip install PyAudio-0.2.11-cp36-cp36m-win_amd64.whl`<br>
+
 
 <hr>
 
