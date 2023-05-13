@@ -17,6 +17,8 @@ import onnxruntime
 from utils import log_specgram , MFCC , MSLFB
 import wave
 from termcolor import colored
+from halo import Halo
+from colorama import Fore, init
 
 
 class Keyword_Spotter:
@@ -172,7 +174,7 @@ def main():
             #get_audio(audio_data)
             frames.clear()
             if len(audio_data) >= NUMBER_OF_SAMPLE_ANALYSED:
-                audio_data = audio_data[:NUMBER_OF_SAMPLE_ANALYSED].astype(np.float64)
+                audio_data = audio_data[:NUMBER_OF_SAMPLE_ANALYSED].astype(np.float32)
 
                 msLFB_spec = MSLFB(audio_data)
                 mcff_spec = MFCC(audio_data)
@@ -183,6 +185,8 @@ def main():
 
                 # Make predictions on new data
                 # Prepare the input data
+                print("x_new_mfcc_reshaped_spec : ", x_new_mfcc_reshaped_spec.shape)
+                print("x_new_mslfb_reshaped_spec : ", x_new_mslfb_reshaped_spec.shape)
                 input_data = {'conv2d_18_input': x_new_mfcc_reshaped_spec, 'conv2d_21_input': x_new_mslfb_reshaped_spec}
                 # Run the prediction
                 try:
