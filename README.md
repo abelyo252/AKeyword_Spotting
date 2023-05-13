@@ -13,6 +13,8 @@ You can  simply follow these instruction to install the latest version of ASP_Ke
 
 <hr>
 
+<p>Keyword spotting is the process of detecting specific words or phrases in a continuous stream of speech. It is a crucial component of many speech recognition systems, including virtual assistants, voice-activated devices, and automated transcription tools. The goal of keyword spotting is to accurately identify and isolate specific keywords from a large corpus of speech data. It also include Graphical user interface.</p>
+
 
 <p align="center">
   <img width="640" height="360" src="https://github.com/abelyo252/ASP_Keyword_Spotting/assets/126100289/97dd62ae-8bdd-459a-b0f1-0425d0a81811">
@@ -20,7 +22,6 @@ You can  simply follow these instruction to install the latest version of ASP_Ke
 
 <pre> Average 0.89 sec for inference</pre>
 
-Keyword spotting is the process of detecting specific words or phrases in a continuous stream of speech. It is a crucial component of many speech recognition systems, including virtual assistants, voice-activated devices, and automated transcription tools. The goal of keyword spotting is to accurately identify and isolate specific keywords from a large corpus of speech data. It also include Graphical user interface
 
 
 <p align="center">
