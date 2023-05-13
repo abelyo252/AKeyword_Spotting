@@ -4,7 +4,7 @@
 
 
 **AKeyword_Spotting is a audio signal processer and training used for keyspot from audio**.
-This is a Amharic speech recognition model that makes its easy to run Criminal Speech recognition and AI functions. At the core it uses [Pygame](https://github.com/pygame) and [Onnxruntime](https://github.com/microsoft/onnxruntime) libraries. 
+This is a Amharic speech recognition model that makes its easy to run Criminal Speech recognition and AI functions. At the core it uses [Pygame](https://github.com/pygame) and [onnxruntime](https://github.com/microsoft/onnxruntime) libraries. 
 
 
 ## Installation
@@ -45,7 +45,7 @@ You can use the project by running the `key_spotter.py` file and passing an Amha
 First Looking at the digital signal utterances here is how a few randomly selected ones look like in time domain with the word mentioned above each plot with their log spec:
 
 <p align="center">
-  <img width="640" height="360" src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/2954cd48-e2b0-42e3-a24a-8bc83076623c">
+  <img  src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/2954cd48-e2b0-42e3-a24a-8bc83076623c">
 </p>
 
 Of course, this is prior to the addition of any noise to the samples. Additionally, because the utterances rarely last a 3 full second, the length of them may be reduced depending on the strength of the signal. 
@@ -59,7 +59,7 @@ Using deep learning to recognize speech automatically. Mel-Scaled Log Filter-Ban
 </p>
 
 **MS-LFB CNN Model**
-A CNN model has been constructed based on the MS-LFB coefficients and using the 2D output of MS-LFB over time similar to a grayscale image. The image is fed into multiple layers of 2D convolution combined with pooling and dropout layers. Finally the layers have been flattened and with multiple dense layers predicted the output. The full model code is included in the ensemble model so it is not repeated here. But here is an image from reference [8] which describes this process:
+A CNN model has been constructed based on the MS-LFB coefficients and using the 2D output of MS-LFB over time similar to a grayscale image. The image is fed into multiple layers of 2D convolution combined with pooling and dropout layers. Finally the layers have been flattened and with multiple dense layers predicted the output. The full model code is included in the ensemble model so it is not repeated here. But here is an image from reference which describes this process:
 
 <p align="center">
   <img src="https://github.com/abelyo252/Terminal-ASP_Keyword_Spotting/assets/126100289/0709d3c8-6904-43cb-8d6b-872610a8045b">
