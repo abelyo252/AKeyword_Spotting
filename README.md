@@ -24,12 +24,8 @@ You can  simply use pip to install the latest version of ASP_Keyword_Detector.
 </p>
 
 
-<pre>
-Keyword spotting is the process of detecting specific words or phrases 
-in a continuous stream of speech. It is a crucial component of many spe
-ech recognition systems, including virtual assistants, voice-activated devices, and automated transcription tools. The goal of keyword spotti
-ng is to accurately identify and isolate specific keywords from a large corpus of speech data. It also include Graphical user interface
-</pre>
+Keyword spotting is the process of detecting specific words or phrases in a continuous stream of speech. It is a crucial component of many speech recognition systems, including virtual assistants, voice-activated devices, and automated transcription tools. The goal of keyword spotting is to accurately identify and isolate specific keywords from a large corpus of speech data. It also include Graphical user interface
+
 
 <p align="center">
   <img width="640" height="360" src="https://user-images.githubusercontent.com/126100289/234276539-81fe427d-eb08-4c58-b44d-0b82ad406b93.png">
