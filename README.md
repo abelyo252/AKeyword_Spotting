@@ -8,7 +8,7 @@ This is a Amharic speech recognition model that makes its easy to run Criminal S
 
 
 ## Installation
-To install the most recent version of ASP_Keyword_Detector, just follow these simple instructions. You must install Python versions 3.6.x to 3.9.x; we are using Python 3.6 for this project; if the two are incompatible, try another version by searching online. If git wasn't installed on your Windows PC, get it from `https://gitforwindows.org/` or install it on linux using `sudo apt-get install git` 
+To install the most recent version of ASP_Keyword_Detector, just follow these simple instructions. You must install Python versions 3.6.x to 3.9.x; we are using Python 3.6 for this project; you can download 3.6.8 from [here](https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe) ,if the two are incompatible, try another version by searching online. If git wasn't installed on your Windows PC, get it from `https://gitforwindows.org/` or install it on linux using `sudo apt-get install git` 
 
 `git clone https://github.com/abelyo252/AKeyword_Spotting.git`<br>
 `cd AKeyword_Spotting/`<br>
