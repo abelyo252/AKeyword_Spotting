@@ -65,3 +65,13 @@ def MFCC(signal_resampled):
     filter_banks = MSLFB(signal_resampled)
     mfcc = dct(filter_banks, type=2, axis=1, norm='ortho')[:, 1: (num_ceps + 1)]
     return mfcc
+    
+def step_decay_schedule(initial_lr=1e-3, decay_factor=0.75, step_size=10):
+    '''
+    Wrapper function to create a LearningRateScheduler with step decay schedule.
+    '''
+
+    def schedule(epoch):
+        return initial_lr * (decay_factor ** np.floor(epoch / step_size))
+
+    return LearningRateScheduler(schedule)
