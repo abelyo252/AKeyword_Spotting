@@ -182,15 +182,19 @@ def main():
             
             if len(audio_data) >= NUMBER_OF_SAMPLE_ANALYSED:
                 audio_data = audio_data[:NUMBER_OF_SAMPLE_ANALYSED].astype(np.float32)
+            
+            
             msLFB_spec = MSLFB(audio_data)
             mcff_spec = MFCC(audio_data)
             # Assume x_new_mfcc and x_new_mslfb are the new input data
             x_new_mfcc_reshaped_spec = np.reshape(mcff_spec, (1, mcff_spec.shape[0], mcff_spec.shape[1], 1)).astype(np.float32)
             x_new_mslfb_reshaped_spec = np.reshape(msLFB_spec, (1, msLFB_spec.shape[0], msLFB_spec.shape[1], 1)).astype(np.float32)
-
-
             # Make predictions on new data
             # Prepare the input data
+            audio_data.fill(0)
+            
+        
+            
             print("x_new_mfcc_reshaped_spec : ", x_new_mfcc_reshaped_spec.shape)
             print("x_new_mslfb_reshaped_spec : ", x_new_mslfb_reshaped_spec.shape)
             input_data = {'input_27': x_new_mfcc_reshaped_spec, 'input_28': x_new_mslfb_reshaped_spec}
@@ -199,7 +203,8 @@ def main():
                 y_probs = self.model.run(None, input_data)
                 y_preds = y_probs[0].argmax(axis=1)
                 result = f"{label_names[y_preds[0]]}"
-            except:
+            except Exception as e:
+                print(e)
                 print("[!Notice!] Tensor Received incorrect Value".format(Fore.BLUE, Fore.RESET))
                 return None
             else:
