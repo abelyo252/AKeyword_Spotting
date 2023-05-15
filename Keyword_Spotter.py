@@ -103,7 +103,7 @@ def main():
     FORMAT = pyaudio.paInt16
     CHANNELS = 1
     RATE = 16000
-    RECORD_SECONDS = 3
+    RECORD_SECONDS = 1.5
     SAMPLING_RATE = 16000
 
     p = pyaudio.PyAudio()
@@ -125,9 +125,9 @@ def main():
     label_names = ['Eserat', 'Agtew', 'Dferat', 'Tlefat', 'Reshinachew', 'Tsetargew',
                    'Forjid', 'Shibr', 'Gejera', 'Ets', 'Gubo', 'Zrefew', 'Refrfew',
                    'Dfaw', 'Selilew', 'Musina', 'Zelzlew', 'Afendaw', 'Agayew', 'Zerirew', 'Unknown', 'Silence']
-    NUMBER_OF_SAMPLE_ANALYSED = 48000
+    NUMBER_OF_SAMPLE_ANALYSED = 24000
 
-    RECORD_SECONDS = 3
+    RECORD_SECONDS = 1.5
     SAMPLING_RATE = 16000
     frames = []
     WIDTH = 925
