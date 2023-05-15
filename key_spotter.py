@@ -34,15 +34,15 @@ class Keyword_Spotter:
 
         self.RATE = 16000
         self.CHUNK_SIZE = self.audio_length
-        self.HALF_CHUNK_SIZE = self.CHUNK_SIZE // 2
+        #self.HALF_CHUNK_SIZE = self.CHUNK_SIZE // 2
 
         self.chunks = []
-        self.new_chunks = []
+        #self.new_chunks = []
         self.result1 = []
-        self.result2 = []
-        self.classes = ['Eserat', 'Agtew', 'Dferat', 'Tlefat', 'Reshinachew', 'Tsetargew',
-                   'Forjid', 'Shibr', 'Gejera', 'Ets', 'Gubo', 'Zrefew', 'Refrfew',
-                   'Dfaw', 'Selilew', 'Musina', 'Zelzlew', 'Afendaw', 'Agayew', 'Zerirew', 'Unknown', 'Silence']
+        #self.result2 = []
+        self.classes =  ['eserat', 'agtew', 'dferat', 'tlefat', 'reshinachew', 'tsetargew',
+           'forjid', 'shibir', 'gejera', 'ets', 'gubo', 'zrefew', 'refrfew',
+           'dfaw', 'selilew', 'musina', 'zelzlew', 'afendaw', 'agayew', 'zerirew', 'silence']
 
         # Call User Defined Functions
         self.display_init()
@@ -80,8 +80,8 @@ class Keyword_Spotter:
 
     def file_checker(self):
 
-        if self.audio_length != 48000:
-            print("\033[91mInvalid Audio Length Passed , Model prepared for analysed 48000 sample!\033[0m")
+        if self.audio_length != 24000:
+            print("\033[91mInvalid Audio Length Passed , Model prepared for analysed 24000 sample!\033[0m")
             self.syntax_helper()
             exit()
 
@@ -108,16 +108,16 @@ class Keyword_Spotter:
         for i in range(0, len(self.audio), self.CHUNK_SIZE):
             self.chunks.append(self.audio[i:i + self.CHUNK_SIZE])
 
-        for i in range(len(self.chunks) - 1):
-            new_concat = np.concatenate(
-                (self.chunks[i][self.HALF_CHUNK_SIZE:], self.chunks[i + 1][:self.HALF_CHUNK_SIZE]))
-            self.new_chunks.append(new_concat)
+        #for i in range(len(self.chunks) - 1):
+            #new_concat = np.concatenate(
+              #  (self.chunks[i][self.HALF_CHUNK_SIZE:], self.chunks[i + 1][:self.HALF_CHUNK_SIZE]))
+            #self.new_chunks.append(new_concat)
 
 
     def predict_model(self, signal_resampled):
 
 
-        audio_length = 48000
+        audio_length = 24000
         if len(signal_resampled.shape) == 2:
             signal_resampled = np.mean(signal_resampled, axis=1)
 
@@ -142,7 +142,7 @@ class Keyword_Spotter:
 
         # Make predictions on new data
         # Prepare the input data
-        input_data = {'conv2d_18_input': x_new_mfcc_reshaped_spec, 'conv2d_21_input': x_new_mslfb_reshaped_spec}
+        input_data = {'input_27': x_new_mfcc_reshaped_spec, 'input_28': x_new_mslfb_reshaped_spec}
         # Run the prediction
         try:
             y_probs = self.model.run(None, input_data)
@@ -169,38 +169,39 @@ class Keyword_Spotter:
                 continue
             self.result1.append(res)
 
-        time = 2
-        for audio_data in tqdm.tqdm(self.new_chunks, desc="Processing audio chunks"):
-            res = self.predict_model(audio_data)
-            if res == None:
-                continue
-            self.result2.append(res)
+        #time = 2
+        #for audio_data in tqdm.tqdm(self.new_chunks, desc="Processing audio chunks"):
+         #   res = self.predict_model(audio_data)
+          #  if res == None:
+           #     continue
+            #self.result2.append(res)
 
     def display_result(self,infer):
         # display the result on terminal
         print()
         print(
-            """{}[*] We have detected {} Sequencial and {} Intermediatary Amharic criminal words in this audio file [*]{}\n""".format(
-                Fore.GREEN, len(self.result1), len(self.result2), Fore.RESET))
+            """{}[*] We have detected {} Sequencial Amharic criminal words in this audio file [*]{}\n""".format(
+                Fore.GREEN, len(self.result1), Fore.RESET))
         print("=============================================================================")
         print()
         time1 = 0
-        time2 = 2
-        for disp in zip_longest(self.result1,self.result2):
-            
+        #time2 = 2
+        for disp in self.result1:
+        #for disp in zip_longest(self.result1,self.result2):
                 minute1 = int(time1 / 60)
                 second1 = time1 % 60
-                minute2 = int(time2 / 60)
-                second2 = time2 % 60
-                print(f"onDetect Seq: {disp[0]} -> around {minute1:02d}:{second1:02d},  Intermediatary: {disp[1]} -> around {minute2:02d}:{second2:02d}")
+                #minute2 = int(time2 / 60)
+                #second2 = time2 % 60
+                #print(f"onDetect Seq: {disp[0]} -> around {minute1:02d}:{second1:02d},  Intermediatary: {disp[1]} -> around {minute2:02d}:{second2:02d}")
+                print(f"onDetect Seq: {disp[0]} -> around {minute1:02d}:{second1:02d}")
                 time1 = time1 + 3
-                time2 = time2 + 3
+                #time2 = time2 + 3
 
 
         print(f"")
         print(
             """{}[*] Model Inference time for the given audio: {} second [*]{}\n""".format(
-                Fore.GREEN, str( round(infer, 3)), Fore.RESET))
+                Fore.GREEN, str(round(infer, 3)), Fore.RESET))
         
 
 
