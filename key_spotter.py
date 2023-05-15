@@ -186,15 +186,17 @@ class Keyword_Spotter:
         print()
         time1 = 0
         #time2 = 2
-        for disp in self.result1:
+        print(self.result1)
+        for display in self.result1:
         #for disp in zip_longest(self.result1,self.result2):
+        
                 minute1 = int(time1 / 60)
                 second1 = time1 % 60
                 #minute2 = int(time2 / 60)
                 #second2 = time2 % 60
                 #print(f"onDetect Seq: {disp[0]} -> around {minute1:02d}:{second1:02d},  Intermediatary: {disp[1]} -> around {minute2:02d}:{second2:02d}")
-                print(f"onDetect Seq: {disp} -> around {minute1:02d}:{second1:02d}")
-                time1 = time1 + 3
+                print(f"onDetect Sequential : {display} -> around {minute1:02d}:{second1:02d}")
+                time1 = time1 + 1.5
                 #time2 = time2 + 3
 
 
