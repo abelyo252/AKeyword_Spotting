@@ -193,7 +193,7 @@ class Keyword_Spotter:
                 #minute2 = int(time2 / 60)
                 #second2 = time2 % 60
                 #print(f"onDetect Seq: {disp[0]} -> around {minute1:02d}:{second1:02d},  Intermediatary: {disp[1]} -> around {minute2:02d}:{second2:02d}")
-                print(f"onDetect Seq: {disp[0]} -> around {minute1:02d}:{second1:02d}")
+                print(f"onDetect Seq: {disp} -> around {minute1:02d}:{second1:02d}")
                 time1 = time1 + 3
                 #time2 = time2 + 3
 
