@@ -18,7 +18,7 @@ To install the most recent version of ASP_Keyword_Detector, just follow these si
 
 ## Run Code
 
-`$ python key_spotter.py --al 48000 --model "models\model.onnx" --a audio.wav --conf 0.8`<br>
+`$ python key_spotter.py --al 24000 --model "models\model.onnx" --a audio.wav --conf 0.8`<br>
 The output will be a list of detected criminal words, if any. with detected time stamp but if you want to run GUI version with audio spectrum use this instruction but gui part for now is underdevelopment and still has some errors<br>
 `$ python Keyword_Spotter.py`
 <hr>
