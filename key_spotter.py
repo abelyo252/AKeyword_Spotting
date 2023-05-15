@@ -146,16 +146,9 @@ class Keyword_Spotter:
         # Run the prediction
         try:
             y_probs = self.model.run(None, input_data)
-            arr = y_probs[0]
-            selected_values = arr[arr > self.dec_conf]
-
-            # Convert the output to class predictions
-            if len(selected_values) == 0:
-                return None
-
-            else:
-                y_preds = selected_values.argmax()
-                return self.classes[y_preds]
+            y_preds = y_probs[0].argmax(axis=1)
+            
+            return self.classes[y_preds[0]]
         except:
             print("[!Notice!] Tensor Received incorrect Value".format(Fore.BLUE, Fore.RESET))
             return None
@@ -186,7 +179,7 @@ class Keyword_Spotter:
         print()
         time1 = 0
         #time2 = 2
-        print(self.result1)
+    
         for display in self.result1:
         #for disp in zip_longest(self.result1,self.result2):
         
@@ -195,7 +188,7 @@ class Keyword_Spotter:
                 #minute2 = int(time2 / 60)
                 #second2 = time2 % 60
                 #print(f"onDetect Seq: {disp[0]} -> around {minute1:02d}:{second1:02d},  Intermediatary: {disp[1]} -> around {minute2:02d}:{second2:02d}")
-                print(f"onDetect Sequential : {display} -> around {minute1:02d}:{second1:02d}")
+                print(f"onDetect Sequential : {display} -> around {int(minute1):02d}:{int(second1):02d}")
                 time1 = time1 + 1.5
                 #time2 = time2 + 3
 
