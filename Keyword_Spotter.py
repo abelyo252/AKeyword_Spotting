@@ -194,19 +194,12 @@ def main():
                 # Prepare the input data
                 print("x_new_mfcc_reshaped_spec : ", x_new_mfcc_reshaped_spec.shape)
                 print("x_new_mslfb_reshaped_spec : ", x_new_mslfb_reshaped_spec.shape)
-                input_data = {'conv2d_18_input': x_new_mfcc_reshaped_spec, 'conv2d_21_input': x_new_mslfb_reshaped_spec}
+                input_data = {'input_27': x_new_mfcc_reshaped_spec, 'input_28': x_new_mslfb_reshaped_spec}
                 # Run the prediction
                 try:
                     y_probs = self.model.run(None, input_data)
-                    arr = y_probs[0]
-                    selected_values = arr[arr > 0.5]
-
-                    # Convert the output to class predictions
-                    if len(selected_values) == 0:
-                        result = "None"
-                    else:
-                        y_preds = selected_values.argmax()
-                        result = f"{label_names[y_preds]}"
+                    y_preds = y_probs[0].argmax(axis=1)
+                    result = f"{label_names[y_preds[0]]}"
                 except:
                     print("[!Notice!] Tensor Received incorrect Value".format(Fore.BLUE, Fore.RESET))
                     return None
