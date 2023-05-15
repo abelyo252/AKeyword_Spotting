@@ -192,11 +192,6 @@ def main():
             # Make predictions on new data
             # Prepare the input data
             audio_data.fill(0)
-            
-        
-            
-            print("x_new_mfcc_reshaped_spec : ", x_new_mfcc_reshaped_spec.shape)
-            print("x_new_mslfb_reshaped_spec : ", x_new_mslfb_reshaped_spec.shape)
             input_data = {'input_27': x_new_mfcc_reshaped_spec, 'input_28': x_new_mslfb_reshaped_spec}
             # Run the prediction
             try:
