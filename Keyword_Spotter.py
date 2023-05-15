@@ -200,15 +200,14 @@ def main():
             input_data = {'input_27': x_new_mfcc_reshaped_spec, 'input_28': x_new_mslfb_reshaped_spec}
             # Run the prediction
             try:
-                y_probs = self.model.run(None, input_data)
+                y_probs = ks.model.run(None, input_data)
                 y_preds = y_probs[0].argmax(axis=1)
                 result = f"{label_names[y_preds[0]]}"
             except Exception as e:
                 print(e)
                 print("[!Notice!] Tensor Received incorrect Value".format(Fore.BLUE, Fore.RESET))
                 return None
-            else:
-                print(colored('[!] Keyspotter didnt capture enough frame , Free some RAM space', 'green'))
+            
 
         ks.update(dt)  # You can update/draw here, I've just moved the code for neatness.
         ks.draw(data,result)
