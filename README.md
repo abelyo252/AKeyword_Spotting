@@ -74,7 +74,7 @@ A CNN model has been constructed based on the MS-LFB coefficients and using the 
 
 **Over-ALL Architechure**
 <p align="center">
-  <img src="https://github.com/abelyo252/AKeyword_Spotting/blob/main/image/arch.png">
+  <img src="https://github.com/abelyo252/AKeyword_Spotting/blob/main/Ach.png">
 </p>
 
 
