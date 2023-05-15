@@ -122,9 +122,9 @@ def main():
     ##################################################################
 
     result = ''
-    label_names = ['Eserat', 'Agtew', 'Dferat', 'Tlefat', 'Reshinachew', 'Tsetargew',
-                   'Forjid', 'Shibr', 'Gejera', 'Ets', 'Gubo', 'Zrefew', 'Refrfew',
-                   'Dfaw', 'Selilew', 'Musina', 'Zelzlew', 'Afendaw', 'Agayew', 'Zerirew', 'Unknown', 'Silence']
+    label_names = ['eserat', 'agtew', 'dferat', 'tlefat', 'reshinachew', 'tsetargew',
+           'forjid', 'shibir', 'gejera', 'ets', 'gubo', 'zrefew', 'refrfew',
+           'dfaw', 'selilew', 'musina', 'zelzlew', 'afendaw', 'agayew', 'zerirew', 'silence']
     NUMBER_OF_SAMPLE_ANALYSED = 24000
 
     RECORD_SECONDS = 1.5
